@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c31">
+  <title>Dataset | Food Waste ML Dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body data-page="dataset">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/overview"><span class="brand-mark" aria-hidden="true">FW</span><span>Food Waste <small>ML dashboard</small></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/overview"><span>01</span> Overview</a>
+        <a href="/prediction"><span>02</span> Prediction</a>
+        <a href="/model-evaluation"><span>03</span> Model evaluation</a>
+        <a href="/dataset" aria-current="page"><span>04</span> Dataset</a>
+      </nav>
+      <div class="sidebar-foot"><span class="status-dot"></span> Local ML workspace</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><span class="eyebrow">Training records · CSV</span><h1>Dataset</h1><p class="subtext">Upload labeled restaurant records, inspect data coverage, and review the expected CSV schema.</p></div>
+        <span class="source-badge" id="sourceBadge">Loading data…</span>
+      </header>
+
+      <section class="panel upload-panel">
+        <div class="upload-heading">
+          <div class="upload-symbol" aria-hidden="true">↑</div>
+          <div><h2>Train with your restaurant data</h2><p class="muted">Upload a UTF-8 CSV with at least 20 labeled rows. Models and dashboard summaries update after validation.</p></div>
+        </div>
+        <div class="toolbar-actions">
+          <label class="button-link" for="csvUpload">Choose CSV file</label>
+          <input class="visually-hidden" id="csvUpload" type="file" accept=".csv,text/csv">
+          <a class="button-link button-secondary" href="/sample.csv">Download sample CSV</a>
+          <span class="muted upload-status" id="uploadStatus" role="status" aria-live="polite"></span>
+        </div>
+        <p class="notice" id="predictionNotice" role="status" hidden></p>
+      </section>
+
+      <section aria-labelledby="coverageTitle">
+        <div class="section-heading"><div><h2 id="coverageTitle">Current training data</h2><p class="subtext">Summary of the dataset currently held by the local ML server.</p></div></div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div class="panel">
+          <h2>Average waste by food type</h2>
+          <p class="muted">A descriptive summary of labeled examples in the current dataset.</p>
+          <div class="bar-list chart-list" id="foodChart"></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="schemaTitle">
+        <div class="section-heading"><div><h2 id="schemaTitle">Required CSV schema</h2><p class="subtext">Column names must match exactly. The waste column is the supervised-learning target.</p></div></div>
+        <div class="panel table-panel">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column</th><th>Type</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><code>food_type</code></td><td>Category</td><td>Food category</td></tr>
+                <tr><td><code>guests</code></td><td>Number</td><td>Number of guests</td></tr>
+                <tr><td><code>event_type</code></td><td>Category</td><td>Service or event type</td></tr>
+                <tr><td><code>quantity_prepared_kg</code></td><td>Number</td><td>Food prepared, in kilograms</td></tr>
+                <tr><td><code>storage_condition</code></td><td>Category</td><td>Storage quality/condition</td></tr>
+                <tr><td><code>purchase_history_kg</code></td><td>Number</td><td>Historical amount purchased, in kilograms</td></tr>
+                <tr><td><code>season</code></td><td>Category</td><td>Season</td></tr>
+                <tr><td><code>preparation_method</code></td><td>Category</td><td>Food preparation method</td></tr>
+                <tr><td><code>location</code></td><td>Category</td><td>Geographical location/category</td></tr>
+                <tr><td><code>price_per_kg</code></td><td>Number</td><td>Price per kilogram in your dataset currency</td></tr>
+                <tr><td><code>waste_kg</code></td><td>Number</td><td>Observed food waste in kilograms (target)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="notice">Numeric features and target must be non-negative. Rows with missing waste targets are excluded; numeric feature values must be present and valid. Additional columns are ignored.</div>
+        </div>
+      </section>
+      <footer>Uploaded data stays in the running local server process and resets when the server stops.</footer>
+    </main>
+  </div>
+</body>
+</html>

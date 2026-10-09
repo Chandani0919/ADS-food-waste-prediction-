@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c31">
+  <title>Prediction | Food Waste ML Dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body data-page="prediction">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/overview"><span class="brand-mark" aria-hidden="true">FW</span><span>Food Waste <small>ML dashboard</small></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/overview"><span>01</span> Overview</a>
+        <a href="/prediction" aria-current="page"><span>02</span> Prediction</a>
+        <a href="/model-evaluation"><span>03</span> Model evaluation</a>
+        <a href="/dataset"><span>04</span> Dataset</a>
+      </nav>
+      <div class="sidebar-foot"><span class="status-dot"></span> Local ML workspace</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><span class="eyebrow">Machine learning · regression</span><h1>Food waste prediction</h1><p class="subtext">Enter service details and estimate waste using a model trained on your data.</p></div>
+        <span class="source-badge" id="sourceBadge">Loading data…</span>
+      </header>
+
+      <section class="panel prediction-panel">
+        <div class="panel-heading">
+          <div><h2>Configure prediction</h2><p class="muted">The selected regressor is refit on all labeled records before predicting.</p></div>
+          <span class="model-pill">11 input features</span>
+        </div>
+        <form id="predictionForm">
+          <div class="form-toolbar">
+            <div class="field">
+              <label for="modelSelect">Machine-learning model</label>
+              <select id="modelSelect" name="model"><option>Linear Regression</option><option>Decision Tree</option><option>Random Forest</option></select>
+            </div>
+            <button type="submit" id="predictButton">Predict expected waste <span aria-hidden="true">→</span></button>
+          </div>
+          <h3 class="form-section-title">Restaurant and service details</h3>
+          <div class="form-grid" id="featureFields"></div>
+          <div class="result" id="predictionResult" role="status" aria-live="polite" hidden>
+            <div class="result-icon" aria-hidden="true">✓</div>
+            <div><div class="result-label">Predicted food waste</div><div class="result-value" id="predictionValue">—</div><div class="result-detail" id="predictionDetail"></div></div>
+          </div>
+          <p class="notice" id="predictionNotice" role="status" hidden></p>
+        </form>
+      </section>
+      <section class="info-grid">
+        <article class="panel"><span class="step-number">01</span><h3>Choose a model</h3><p class="muted">Pick one of the regressors evaluated on your labeled records.</p></article>
+        <article class="panel"><span class="step-number">02</span><h3>Enter service conditions</h3><p class="muted">Use the guest count, prepared quantity, food type, storage, and other details.</p></article>
+        <article class="panel"><span class="step-number">03</span><h3>Review the estimate</h3><p class="muted">The result is a planning estimate; validate it against actual waste records.</p></article>
+      </section>
+      <footer>Model uses labeled waste history. Synthetic demo data is for illustration only.</footer>
+    </main>
+  </div>
+</body>
+</html>

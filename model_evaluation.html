@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c31">
+  <title>Model evaluation | Food Waste ML Dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body data-page="model-evaluation">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/overview"><span class="brand-mark" aria-hidden="true">FW</span><span>Food Waste <small>ML dashboard</small></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/overview"><span>01</span> Overview</a>
+        <a href="/prediction"><span>02</span> Prediction</a>
+        <a href="/model-evaluation" aria-current="page"><span>03</span> Model evaluation</a>
+        <a href="/dataset"><span>04</span> Dataset</a>
+      </nav>
+      <div class="sidebar-foot"><span class="status-dot"></span> Local ML workspace</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><span class="eyebrow">Held-out test split · regression</span><h1>Model evaluation</h1><p class="subtext">Compare predictive performance and inspect what drives tree-based model estimates.</p></div>
+        <span class="source-badge" id="sourceBadge">Loading data…</span>
+      </header>
+
+      <section class="panel evaluation-lead">
+        <div class="evaluation-mark" aria-hidden="true">ƒ</div>
+        <div><span class="eyebrow">Same split · same metrics</span><h2>Choose the model that predicts best.</h2><p class="muted">Linear Regression, Decision Tree, and Random Forest use the same train/test partition. Models are ranked using MAE.</p></div>
+      </section>
+
+      <section aria-labelledby="comparisonTitle">
+        <div class="section-heading"><div><h2 id="comparisonTitle">Regression model comparison</h2><p class="subtext">MAE and RMSE are prediction errors in kilograms; lower is better. Higher R² is better.</p></div><a class="text-link" href="/prediction">Go make a prediction <span aria-hidden="true">→</span></a></div>
+        <div class="model-cards" id="modelCards"></div>
+      </section>
+
+      <section class="two-column evaluation-grid">
+        <article class="panel">
+          <h2>Holdout mean absolute error</h2>
+          <p class="muted">Average absolute difference between predicted and recorded waste.</p>
+          <div class="bar-list chart-list" id="errorChart"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-heading"><div><h2>Feature importance</h2><p class="muted">Aggregated importance for the selected tree model.</p></div></div>
+          <div class="field model-filter"><label for="modelSelect">Inspect model</label><select id="modelSelect"><option>Decision Tree</option><option>Random Forest</option><option>Linear Regression</option></select></div>
+          <div class="bar-list chart-list" id="importanceChart"></div>
+          <p class="notice" id="importanceNote">Feature importance measures model reliance, not cause and effect.</p>
+        </article>
+      </section>
+
+      <section class="panel metric-guide">
+        <h2>How to read the metrics</h2>
+        <div class="metric-guide-grid">
+          <div><strong>MAE</strong><p class="muted">Mean absolute error. Average miss in kilograms; it is used to rank models.</p></div>
+          <div><strong>RMSE</strong><p class="muted">Root mean squared error. Penalizes larger errors more heavily.</p></div>
+          <div><strong>R²</strong><p class="muted">Explained variance relative to predicting the test-set mean; can be negative.</p></div>
+        </div>
+      </section>
+      <footer>Evaluation uses a reproducible 80/20 holdout split. Validate further with representative future-period data.</footer>
+    </main>
+  </div>
+</body>
+</html>

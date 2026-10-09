@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c31">
+  <title>Overview | Food Waste ML Dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body data-page="overview">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/overview">
+        <span class="brand-mark" aria-hidden="true">FW</span>
+        <span>Food Waste <small>ML dashboard</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/overview" aria-current="page"><span>01</span> Overview</a>
+        <a href="/prediction"><span>02</span> Prediction</a>
+        <a href="/model-evaluation"><span>03</span> Model evaluation</a>
+        <a href="/dataset"><span>04</span> Dataset</a>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="status-dot"></span> Local ML workspace
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><span class="eyebrow">Restaurant sustainability analytics</span><h1>Overview</h1></div>
+        <span class="source-badge" id="sourceBadge">Loading data…</span>
+      </header>
+
+      <section class="welcome-card">
+        <div>
+          <span class="welcome-tag">MACHINE LEARNING · REGRESSION</span>
+          <h2>Turn service data into<br>smarter food planning.</h2>
+          <p>Compare models trained on restaurant records and estimate the food waste expected for your next service.</p>
+          <a class="button-link" href="/prediction">Make a prediction <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+          <span class="art-leaf">✳</span><span class="art-node node-one"></span>
+          <span class="art-node node-two"></span><span class="art-node node-three"></span>
+          <span class="art-caption">DATA → INSIGHT<br>→ LESS WASTE</span>
+        </div>
+      </section>
+
+      <section aria-labelledby="datasetSummaryTitle">
+        <div class="section-heading">
+          <div><h2 id="datasetSummaryTitle">Dataset at a glance</h2><p class="subtext">A quick summary of the records currently being used.</p></div>
+          <a class="text-link" href="/dataset">Explore dataset <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+      </section>
+
+      <section aria-labelledby="modelSummaryTitle">
+        <div class="section-heading">
+          <div><h2 id="modelSummaryTitle">Model performance</h2><p class="subtext">Best model is ranked by lowest mean absolute error on held-out data.</p></div>
+          <a class="text-link" href="/model-evaluation">View full evaluation <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="model-cards" id="modelCards"></div>
+      </section>
+
+      <section class="panel upload-callout">
+        <div class="callout-icon" aria-hidden="true">↑</div>
+        <div><h2>Use your restaurant data</h2><p class="muted">Upload a CSV to evaluate the regressors and make predictions from your own historical records.</p></div>
+        <a class="button-link button-secondary" href="/dataset">Open dataset page</a>
+      </section>
+
+      <footer>Demo metrics are illustrative until you upload real labeled data.</footer>
+    </main>
+  </div>
+</body>
+</html>
