@@ -63,7 +63,7 @@ it with Gunicorn, and provides a public URL when deployment completes.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Chandani0919/ADS-food-waste-prediction-)
 
-After deployment completes, open the [live dashboard](https://ads-food-waste-prediction.onrender.com).
+After deployment completes, open the [live dashboard](https://ads-food-waste-prediction-6r7t.onrender.com).
 
 The app's Dataset page accepts CSV uploads. On the public deployment, uploaded
 data and updated model metrics are visible to every visitor and remain in
