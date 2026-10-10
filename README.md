@@ -24,6 +24,24 @@ python -m pip install -r requirements.txt
 python app.py
 ```
 
+### Troubleshooting: `No module named 'flask'`
+
+This error means the Python interpreter running the app does not have Flask
+installed. It often happens when packages are installed with one Python
+environment but the app is run with another. From this project directory, use
+the same interpreter for installing dependencies and starting the app:
+
+```powershell
+.\new\Scripts\python.exe -m pip install -r requirements.txt
+.\new\Scripts\python.exe app.py
+```
+
+If you are not using the project's `new` virtual environment, replace both
+commands with the same Python command for your environment (for example,
+`py -3`). Installing Flask alone is also possible with
+`.\new\Scripts\python.exe -m pip install Flask`, but installing
+`requirements.txt` ensures the other app dependencies are available too.
+
 The Flask app starts with synthetic demo data and is available at
 <http://127.0.0.1:8765>. The dashboard has four pages—Overview, Prediction,
 Model evaluation, and Dataset—served by the same Flask application. The
