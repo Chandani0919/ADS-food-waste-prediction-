@@ -18,7 +18,7 @@
         <a href="/model-evaluation"><span>03</span> Model evaluation</a>
         <a href="/dataset" aria-current="page"><span>04</span> Dataset</a>
       </nav>
-      <div class="sidebar-foot"><span class="status-dot"></span> Local ML workspace</div>
+      <div class="sidebar-foot"><span class="status-dot"></span> App workspace</div>
     </aside>
 
     <main class="main-content">
@@ -32,6 +32,7 @@
           <div class="upload-symbol" aria-hidden="true">↑</div>
           <div><h2>Train with your restaurant data</h2><p class="muted">Upload a UTF-8 CSV with at least 20 labeled rows. Models and dashboard summaries update after validation.</p></div>
         </div>
+        <div class="notice">This app's dataset is shared with all visitors. Anyone can replace it by uploading another CSV, and data is cleared when the server restarts. Do not upload private or confidential information.</div>
         <div class="toolbar-actions">
           <label class="button-link" for="csvUpload">Choose CSV file</label>
           <input class="visually-hidden" id="csvUpload" type="file" accept=".csv,text/csv">
@@ -42,7 +43,7 @@
       </section>
 
       <section aria-labelledby="coverageTitle">
-        <div class="section-heading"><div><h2 id="coverageTitle">Current training data</h2><p class="subtext">Summary of the dataset currently held by the local ML server.</p></div></div>
+        <div class="section-heading"><div><h2 id="coverageTitle">Current training data</h2><p class="subtext">Summary of the dataset currently loaded on this app instance.</p></div></div>
         <div class="kpi-grid" id="kpiGrid"></div>
         <div class="panel">
           <h2>Average waste by food type</h2>
@@ -75,7 +76,7 @@
           <div class="notice">Numeric features and target must be non-negative. Rows with missing waste targets are excluded; numeric feature values must be present and valid. Additional columns are ignored.</div>
         </div>
       </section>
-      <footer>Uploaded data stays in the running local server process and resets when the server stops.</footer>
+      <footer>Uploaded data is shared with all visitors and resets when the server restarts. Do not upload private or confidential data.</footer>
     </main>
   </div>
 </body>

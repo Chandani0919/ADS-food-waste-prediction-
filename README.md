@@ -49,10 +49,28 @@ dashboard summarizes records and waste, compares models on a held-out test
 split, and shows tree-model feature importance. After model selection, the
 chosen regressor is refit on all labeled records for making predictions. To
 train with your own records, upload a CSV on the Dataset page. Uploaded data is
-shared across pages while the server is running and resets when the server
-stops. **Download sample CSV** provides the expected column names and example
-rows. Uploaded CSVs must be UTF-8 and no larger than 5 MB. The server binds to
-localhost only and is intended for local use, not public deployment.
+shared by visitors while the server is running and resets when the server
+restarts. **Download sample CSV** provides the expected column names and
+example rows. Uploaded CSVs must be UTF-8 and no larger than 5 MB. The local
+development server binds to localhost only.
+
+## Deploy on Render
+
+This repository includes a Render Blueprint. Select **Deploy to Render** below,
+sign in to Render, and follow its prompts to connect this GitHub repository and
+create the web service. Render builds the app from `requirements.txt`, starts
+it with Gunicorn, and provides a public URL when deployment completes.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Chandani0919/ADS-food-waste-prediction-)
+
+After deployment completes, open the [live dashboard](https://ads-food-waste-prediction.onrender.com).
+
+The app's Dataset page accepts CSV uploads. On the public deployment, uploaded
+data and updated model metrics are visible to every visitor and remain in
+server memory only; they are lost when Render restarts or redeploys the
+service. Do not upload private, sensitive, or confidential data. Anyone who
+visits the public app can replace the currently loaded dataset by uploading
+another CSV.
 
 ## CSV schema
 
